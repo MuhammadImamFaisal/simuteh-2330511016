@@ -14,6 +14,7 @@ data/sintetis/   dataset sintetis hasil skrip (jangan diubah manual)
 notebook/        B1_lingkungan, B2_citra_warna, B3_histogram, B4_penapisan, B5_praproses
 src/             buat_dataset_sintetis.py, utils_cv.py, praproses.py
 hasil/           gambar, tabel .csv, param_praproses.json
+laporan/         laporan PDF dan slide PPTX  
 ```
 
 ## Cara Menjalankan
