@@ -1,47 +1,73 @@
-# SIMUTEH - Praproses Citra Daun Teh
+# SIMUTEH - Praproses Citra Daun Teh (Evaluasi P1-P4)
 
-## Deskripsi
-Proyek ini merupakan rangkaian praproses citra daun teh untuk membantu
-meningkatkan kontras bercak dan mengurangi noise sebelum tahap analisis
-Computer Vision.
+Sistem Pemeriksaan Mutu Daun Teh berbasis citra untuk kelompok tani teh rakyat di Kabupaten Sukabumi.
+Repository ini memuat tahap **akuisisi** dan **praproses** (Pertemuan 1-4) mata kuliah Computer Vision.
 
-## Urutan Pipeline
-1. Resize citra dengan lebar 640 piksel.
-2. Gamma correction dengan gamma 1.0.
-3. CLAHE pada kanal Value (HSV), clip limit 2.0 dan tile 8.
-4. Denoising menggunakan median filter dengan kernel 3.
-5. Sharpening dengan tajam_k 0.0 (dinonaktifkan).
+- **Nama / NIM:** Muhammad Imam Faisal / 2330511016
+- **SEED dataset:** `1016` (4 digit terakhir NIM)
+- **Python:** 3.13
 
-## Parameter
-Parameter praproses disimpan di:
-`hasil/param_praproses.json`
+## Struktur
+
+```
+data/sintetis/   dataset sintetis hasil skrip (jangan diubah manual)
+notebook/        B1_lingkungan, B2_citra_warna, B3_histogram, B4_penapisan, B5_praproses
+src/             buat_dataset_sintetis.py, utils_cv.py, praproses.py
+hasil/           gambar, tabel .csv, param_praproses.json
+```
 
 ## Cara Menjalankan
-1. Buka notebook Google Colab proyek SIMUTEH.
-2. Jalankan cell inisialisasi dan impor modul.
-3. Pastikan dataset tersedia di folder `data/sintetis`.
-4. Jalankan seluruh cell notebook dari awal sampai akhir.
-5. Hasil evaluasi tersimpan di folder `hasil`.
 
-## Seed
-Nilai SEED: 1016
+1. Pasang pustaka (dari folder utama repository):
+   ```
+   pip install -r requirements.txt
+   ```
+2. Bangkitkan dataset sintetis (SEED = 1016):
+   ```
+   python src/buat_dataset_sintetis.py
+   ```
+   Hasilnya 60 citra di `data/sintetis/`.
+3. Buka notebook di folder `notebook/` dan jalankan berurutan B1 sampai B5
+   (Restart & Run All). Semua hasil tersimpan di `hasil/`.
+
+## Rangkaian Praproses (src/praproses.py)
+
+Urutan: ubah ukuran -> koreksi gamma -> CLAHE kanal V -> redam derau -> tajamkan.
+Parameter final (`hasil/param_praproses.json`):
+
+| Langkah | Parameter |
+|---|---|
+| Ubah ukuran | lebar 640 px, INTER_AREA |
+| Koreksi gamma | 1.0 (tidak aktif) |
+| CLAHE kanal V | clip 2.0, tile 8x8 |
+| Redam derau | median 3x3 |
+| Tajamkan | tajam_k 0 (tidak aktif) |
+
+Pemakaian:
+```python
+from praproses import praproses
+hasil = praproses(img_bgr)          # parameter bawaan
+hasil = praproses(img_bgr, {"clahe_clip": 1.0})   # ubah sebagian parameter
+```
 
 ## Ringkasan Hasil
-Evaluasi terhadap 40 citra dengan bercak menunjukkan:
-- Bayangan: KB meningkat 83.22%.
-- Gelap: KB meningkat 66.88%.
-- Kontras rendah: KB meningkat 25.34%.
-- Normal: KB meningkat 14.88%.
-- Terang: KB menurun 10.78%.
 
-Pengujian terhadap 20 citra sehat menunjukkan standar deviasi
-area daun menurun pada kondisi bayangan, gelap, kontras rendah,
-dan normal. Pada kondisi terang, standar deviasi meningkat.
+- Kanal terbaik untuk memisahkan bercak dari daun: **R** (KB tertinggi di semua kondisi cahaya).
+- Kontras Bercak (KB) kanal R sebelum -> sesudah praproses, 40 citra berbercak:
 
-## File Hasil
-- `hasil/param_praproses.json`
-- `hasil/b5_evaluasi_praproses.csv`
-- `hasil/b5_tabel12.csv`
-- `hasil/b5_uji_bercak_palsu.csv`
-- `hasil/b5_tabel13_justifikasi.csv`
-- `hasil/b5_diagram_pipeline.png`
+| Kondisi | KB sebelum | KB sesudah | Perubahan |
+|---|---|---|---|
+| normal | 8.84 | 10.15 | +14.88% |
+| gelap | 9.52 | 15.89 | +66.88% |
+| terang | 6.53 | 5.83 | -10.78% |
+| kontras_rendah | 3.97 | 4.98 | +25.34% |
+| bayangan | 4.09 | 7.50 | +83.22% |
+
+- Uji bercak palsu pada 20 citra sehat: keragaman intensitas daun sehat naik pada kondisi
+  terang dan kontras_rendah, sehingga kedua kondisi ini paling berisiko memunculkan bercak palsu.
+- Rencana perbaikan: gamma otomatis berdasarkan rerata intensitas dan pengujian clip CLAHE yang lebih rendah.
+
+## Catatan
+
+Dataset bersifat sintetis dan tidak dimaksudkan sebagai acuan diagnosis penyakit tanaman.
+Sebagian kode dibantu alat AI generatif; rinciannya dicantumkan pada bagian refleksi laporan.
