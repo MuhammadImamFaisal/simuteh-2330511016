@@ -1,0 +1,4 @@
+penapis,PSNR_sebelum_rata2,PSNR_sesudah_rata2,kenaikan_dB
+median_3,32.39,39.44,7.05
+median_5,32.39,41.61,9.22
+gauss_5,32.39,40.8,8.41

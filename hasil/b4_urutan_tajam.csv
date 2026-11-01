@@ -1,0 +1,5 @@
+Penapis peredam,Urutan,PSNR (dB),Sigma latar
+Gaussian,tajam -> redam,30.41,7.8
+Gaussian,redam -> tajam,30.2,8.2
+Median,tajam -> redam,30.14,8.1
+Median,redam -> tajam,31.09,7.2
