@@ -63,8 +63,8 @@ hasil = praproses(img_bgr, {"clahe_clip": 1.0})   # ubah sebagian parameter
 | kontras_rendah | 3.97 | 4.98 | +25.34% |
 | bayangan | 4.09 | 7.50 | +83.22% |
 
-- Uji bercak palsu pada 20 citra sehat: keragaman intensitas daun sehat naik pada kondisi
-  terang dan kontras_rendah, sehingga kedua kondisi ini paling berisiko memunculkan bercak palsu.
+- Uji bercak palsu pada 20 citra sehat: keragaman intensitas daun sehat turun pada empat kondisi
+  dan hanya naik pada kondisi terang (+7,61%), sehingga kondisi terang paling berisiko memunculkan bercak palsu.
 - Rencana perbaikan: gamma otomatis berdasarkan rerata intensitas dan pengujian clip CLAHE yang lebih rendah.
 
 ## Catatan
