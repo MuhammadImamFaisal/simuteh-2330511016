@@ -1,0 +1,9 @@
+citra,kelas,kondisi,metode,KB_sebelum,KB_sesudah
+teh_042.png,berat,gelap,Gamma 0.5,5.19,4.19
+teh_022.png,ringan,gelap,Gamma 0.5,2.0,1.59
+teh_043.png,berat,terang,Gamma 1.8,3.13,3.39
+teh_023.png,ringan,terang,Gamma 1.8,2.88,3.16
+teh_044.png,berat,kontras_rendah,Regang,2.52,2.71
+teh_024.png,ringan,kontras_rendah,Regang,1.1,1.22
+teh_045.png,berat,bayangan,CLAHE,2.45,2.55
+teh_025.png,ringan,bayangan,CLAHE,0.19,0.99

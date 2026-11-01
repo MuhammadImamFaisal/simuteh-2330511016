@@ -1,11 +1,11 @@
-Citra,Kelas,Kondisi Cahaya,Rerata,Simpangan Baku,Min,Maks,Persen Gelap (%),Persen Terang (%)
-teh_041,Berat,Normal,177.4,42.4,68,222,0.0,7.4
-teh_042,Berat,Gelap,138.6,50.3,13,193,16.3,0.0
-teh_043,Berat,Terang,216.7,24.0,139,254,0.0,79.9
-teh_044,Berat,Kontras Rendah,155.3,14.8,109,187,0.0,0.0
-teh_045,Berat,Bayangan,123.1,55.5,19,249,3.2,9.4
-teh_021,Ringan,Normal,163.5,38.8,65,232,0.0,1.7
-teh_022,Ringan,Gelap,115.6,32.8,19,168,3.4,0.0
-teh_023,Ringan,Terang,208.8,27.1,124,254,0.0,76.1
-teh_024,Ringan,Kontras Rendah,156.8,15.3,98,199,0.0,0.0
-teh_025,Ringan,Bayangan,125.1,54.7,22,246,2.0,10.2
+Citra,Kelas,Kondisi Cahaya,Rerata,Simpangan Baku,Min,Maks,Persen Gelap (%),Persen Terang (%),Diagnosis,Usulan Perbaikan
+teh_041,Berat,normal,177.4,42.4,68,222,0.0,7.4,"Sebaran intensitas lebar, mutu baik",Tidak perlu perbaikan besar
+teh_042,Berat,gelap,138.6,50.3,13,193,16.3,0.0,Histogram menumpuk di intensitas rendah,Gamma < 1 untuk mencerahkan
+teh_043,Berat,terang,216.7,24.0,139,254,0.0,79.9,"Histogram menumpuk di intensitas tinggi, banyak piksel jenuh",Gamma > 1 untuk menggelapkan
+teh_044,Berat,kontras_rendah,155.3,14.8,109,187,0.0,0.0,"Rentang intensitas sempit, simpangan baku kecil",Peregangan kontras atau CLAHE
+teh_045,Berat,bayangan,123.1,55.5,19,249,3.2,9.4,Histogram bimodal karena pencahayaan tidak merata,"CLAHE (perbaikan lokal), bukan ekualisasi global"
+teh_021,Ringan,normal,163.5,38.8,65,232,0.0,1.7,"Sebaran intensitas lebar, mutu baik",Tidak perlu perbaikan besar
+teh_022,Ringan,gelap,115.6,32.8,19,168,3.4,0.0,Histogram menumpuk di intensitas rendah,Gamma < 1 untuk mencerahkan
+teh_023,Ringan,terang,208.8,27.1,124,254,0.0,76.1,"Histogram menumpuk di intensitas tinggi, banyak piksel jenuh",Gamma > 1 untuk menggelapkan
+teh_024,Ringan,kontras_rendah,156.8,15.3,98,199,0.0,0.0,"Rentang intensitas sempit, simpangan baku kecil",Peregangan kontras atau CLAHE
+teh_025,Ringan,bayangan,125.1,54.7,22,246,2.0,10.2,Histogram bimodal karena pencahayaan tidak merata,"CLAHE (perbaikan lokal), bukan ekualisasi global"

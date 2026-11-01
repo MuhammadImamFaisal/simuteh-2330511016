@@ -1,0 +1,10 @@
+Metode,Parameter,KB,Simpangan Baku
+asli,-,2.45,55.5
+negatif,s = 255 - r,2.45,55.5
+cerah+50,s = r + 50,2.45,54.0
+kontras,"alpha=1.5, beta=-40",2.46,78.7
+regang,persentil 2-98 (46-220),2.56,80.8
+gamma0.5,gamma=0.5,2.09,40.2
+gamma1.8,gamma=1.8,3.18,59.1
+ekualisasi,global,1.83,73.4
+CLAHE,"clip=2.0, tile=8x8",2.55,46.5
