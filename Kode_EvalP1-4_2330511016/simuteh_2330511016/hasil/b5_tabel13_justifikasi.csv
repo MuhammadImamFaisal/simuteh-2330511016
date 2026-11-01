@@ -1,0 +1,9 @@
+Parameter,Nilai Final,Alasan dan Bukti,Risiko Jika Tidak Tepat
+Resize,640 piksel,Menyeragamkan ukuran citra agar proses praproses memiliki dimensi yang konsisten.,Ukuran terlalu kecil dapat menghilangkan detail bercak.
+Gamma,1.0,Mempertahankan intensitas asli citra tanpa perubahan gamma.,Gamma terlalu tinggi atau rendah dapat membuat citra terlalu terang atau gelap.
+CLAHE clip limit,2.0,Meningkatkan kontras lokal agar bercak lebih terlihat.,Nilai terlalu tinggi dapat memperkuat noise dan detail yang tidak diperlukan.
+CLAHE tile,8,Membagi citra menjadi area lokal untuk pemerataan kontras.,Pembagian area yang tidak tepat dapat menghasilkan kontras yang tidak merata.
+Penapis,Median,Dipilih untuk mereduksi noise sekaligus mempertahankan tepi objek.,Kernel terlalu besar dapat menghilangkan detail bercak kecil.
+Kernel,3,Ukuran kecil dipilih agar pengurangan noise tidak terlalu menghilangkan detail.,Kernel terlalu besar dapat membuat bercak menjadi kabur atau hilang.
+Sigma,1.0,Menjadi nilai parameter standar untuk proses Gaussian apabila penapis tersebut digunakan.,Nilai sigma terlalu besar dapat menghaluskan citra secara berlebihan.
+Ketajaman (tajam_k),0.0,Tidak menggunakan penajaman tambahan agar tidak memperkuat noise atau menghasilkan bercak palsu.,Penajaman berlebihan dapat membuat noise terlihat seperti bercak.
