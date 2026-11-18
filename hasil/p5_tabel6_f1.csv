@@ -1,0 +1,5 @@
+,"mentah, Gray","mentah, R","praproses, Gray","praproses, R"
+Sobel (T = 100),0.848,0.627,0.681,0.548
+Prewitt (T = 75),0.862,0.69,0.71,0.592
+LoG (sigma 3),0.757,0.94,0.69,0.879
+"Canny (30/90, sigma 2)",0.737,0.981,0.78,0.964

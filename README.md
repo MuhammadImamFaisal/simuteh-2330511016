@@ -1,4 +1,4 @@
-# SIMUTEH - Praproses Citra Daun Teh (Evaluasi P1-P4)
+# SIMUTEH - Pemeriksaan Mutu Daun Teh (P1-P6)
 
 Sistem Pemeriksaan Mutu Daun Teh berbasis citra untuk kelompok tani teh rakyat di Kabupaten Sukabumi.
 Repository ini memuat tahap **akuisisi** dan **praproses** (Pertemuan 1-4) mata kuliah Computer Vision.
@@ -11,9 +11,9 @@ Repository ini memuat tahap **akuisisi** dan **praproses** (Pertemuan 1-4) mata 
 
 ```
 data/sintetis/   dataset sintetis hasil skrip (jangan diubah manual)
-notebook/        B1_lingkungan, B2_citra_warna, B3_histogram, B4_penapisan, B5_praproses
-src/             buat_dataset_sintetis.py, utils_cv.py, praproses.py
-hasil/           gambar, tabel .csv, param_praproses.json
+notebook/        B1..B5 (P1-P4), P5_tepi, P6_morfologi
+src/             buat_dataset_sintetis.py, utils_cv.py, praproses.py, utils_tepi.py, bercak.py
+hasil/           gambar, tabel .csv, param_praproses.json, param_bercak.json
 laporan/         laporan PDF dan slide PPTX  
 ```
 
@@ -72,3 +72,34 @@ hasil = praproses(img_bgr, {"clahe_clip": 1.0})   # ubah sebagian parameter
 
 Dataset bersifat sintetis dan tidak dimaksudkan sebagai acuan diagnosis penyakit tanaman.
 Sebagian kode dibantu alat AI generatif; rinciannya dicantumkan pada bagian refleksi laporan.
+
+## P5-P6: Deteksi Tepi, Morfologi, dan Analisis Bercak (tag v0.2-tepi, v0.3-morfologi)
+
+Notebook: `notebook/P5_tepi.ipynb` (Bagian 1-2) dan `notebook/P6_morfologi.ipynb` (Bagian 3-5).
+Praproses memakai `src/praproses.py` milik sendiri dengan `hasil/param_praproses.json`.
+
+### Ringkasan hasil
+
+| Temuan | Angka |
+|---|---|
+| Operator tepi terbaik | Canny kanal R: F1 0,981 (mentah), 0,964 (praproses) |
+| Ambang Canny otomatis | Persentil q = 99 magnitudo gradien, kanal R: F1 0,980-0,987 di 5 kondisi (ambang median: 0,308-0,946) |
+| Batas daun | Gradien morfologi mask daun F1 0,97-0,98 (normal, gelap), tetapi 0,29 pada kontras rendah |
+| Penyaringan bercak | luas + kebulatan + rasio: galat jumlah daun sehat 2,40 -> 0,55 |
+| Modul bercak.py | akurasi kelas 95%, galat persen 0,689, korelasi 0,925; 0 daun sehat dinilai berbercak |
+
+Keputusan: deteksi tepi dipakai untuk tampilan batas bercak dan fitur bentuk, bukan untuk mengukur luas.
+
+### Memakai analisis_daun
+
+```python
+import json
+from praproses import praproses
+from bercak import analisis_daun
+PB = json.load(open("../hasil/param_bercak.json"))
+h = analisis_daun(praproses(img_bgr), PB)
+print(h["kelas"], h["persen_bercak"], h["jumlah_bercak"])   # juga: mask_daun, mask_bercak, bercak (ukuran tiap bercak)
+```
+
+Parameter final (`hasil/param_bercak.json`): kanal R, k = 4, SE elips 5 (opening dan closing), luas_min 40 px,
+bulat_min 0,5, rasio_maks 1,8, batas kelas 0,1% (ringan) dan 1,2% (berat), 0,4375 mm/piksel.
