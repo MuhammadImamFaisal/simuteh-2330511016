@@ -1,0 +1,7 @@
+,Nilai
+Galat absolut rerata persen bercak,0.689
+Korelasi persen prediksi dan acuan,0.925
+Akurasi kelas,0.95
+Jumlah daun sehat yang dinilai berbercak,0
+Jumlah daun berbercak yang dinilai sehat,3
+Kondisi cahaya dengan akurasi terendah,bayangan (0.83)

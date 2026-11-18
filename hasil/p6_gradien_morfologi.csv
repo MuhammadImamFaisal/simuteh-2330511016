@@ -1,0 +1,6 @@
+kondisi,F1 gradien morfologi,F1 Canny
+bayangan,0.749,0.721
+gelap,0.971,0.685
+kontras_rendah,0.29,0.86
+normal,0.981,0.681
+terang,0.854,0.693

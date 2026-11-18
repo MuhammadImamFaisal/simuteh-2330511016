@@ -1,0 +1,5 @@
+aturan,Galat jumlah berat,Galat jumlah ringan,Galat jumlah sehat,Daun sehat dengan bercak palsu
+tanpa saring,2.65,2.85,2.4,13
+luas >= 20,1.8,1.95,1.8,10
+luas + kebulatan,1.25,1.35,1.35,8
+luas + kebulatan + rasio,1.0,0.55,0.55,6

@@ -1,0 +1,4 @@
+nama,kelas,kondisi,persen_acuan,persen_prediksi,jumlah_acuan,jumlah_prediksi,kelas_prediksi,kelas_acuan
+teh_034.png,ringan,kontras_rendah,0.18,0.0,1,0,Sehat,Bercak Ringan
+teh_035.png,ringan,bayangan,0.15,0.08,1,1,Sehat,Bercak Ringan
+teh_040.png,ringan,bayangan,0.1,0.0,1,0,Sehat,Bercak Ringan
